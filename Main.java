@@ -34,7 +34,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int number = (int)(Math.random() * 1000);
 
-        System.out.println("A random number from 0-1000 has been generated.\nEnter a guess within the range and the program will say if it's bigger or smaller.");
+        System.out.println("A random number from 0-1000 has been generated." +
+                "\nEnter a guess within the range and the program will say if it's bigger or smaller.");
         Scan(number, scanner);
     }
 }
