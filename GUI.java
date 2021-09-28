@@ -8,7 +8,10 @@ public class GUI {
         System.out.println(random);
         while (go) {
             int input = Integer.parseInt(JOptionPane.showInputDialog(bigSmall));
-            if (input == random){
+            if (input == 5109) {
+                JOptionPane.showMessageDialog(null, "Program Stopped");
+                go = false;
+            } else if (input == random){
                 JOptionPane.showMessageDialog(null, "You Win!");
                 go = false;
             } else if (input < random) {
@@ -21,8 +24,11 @@ public class GUI {
 
     public static void main(String[] args) {
         int number = (int)(Math.random() * 1000);
-
-        JOptionPane.showMessageDialog(null, "Guess a number from 0-1000");
-        run(number);
+        try {
+            JOptionPane.showMessageDialog(null, "Guess a number from 0-1000");
+            run(number);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "An Error Occurred.");
+        }
     }
 }
