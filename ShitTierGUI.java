@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class GUI {
+public class ShitTierGUI {
 
     public static void run(int random) {
         boolean go = true;
