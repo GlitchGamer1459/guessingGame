@@ -1,14 +1,28 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MehGUI {
+public class MehGUI implements ActionListener {
 
-    public static void GUI(){
-        JFrame frame = new JFrame();
+    private int count = 0;
+    private JLabel label1;
+    private JFrame frame;
+    private JPanel panel;
+    private JButton button1;
 
-        JPanel panel = new JPanel();
+    public MehGUI() {
+        frame = new JFrame();
+        panel = new JPanel();
+        button1 = new JButton("Click");
+        label1 = new JLabel("# of clicks: 0");
+
+        button1.addActionListener(this);
+
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        panel.setLayout(new GridLayout());
+        panel.setLayout(new GridLayout(0, 1));
+        panel.add(button1);
+        panel.add(label1);
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,6 +32,12 @@ public class MehGUI {
     }
 
     public static void main(String[] args) {
-        GUI();
+        new MehGUI();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        count++;
+        label1.setText("# of clicks: " + count);
     }
 }
