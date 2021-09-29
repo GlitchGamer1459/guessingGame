@@ -20,12 +20,13 @@ public class MehGUI implements ActionListener {
         button1.addActionListener(this);
 
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 10, 30));
-        panel.setLayout(new GridLayout(0, 1));
+        panel.setLayout(new GridLayout(2, 1));
         panel.add(button1);
         panel.add(label1);
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setMinimumSize(new Dimension(600,450));
         frame.setTitle("GUI");
         frame.pack();
         frame.setVisible(true);
