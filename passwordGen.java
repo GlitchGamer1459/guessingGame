@@ -12,9 +12,15 @@ public class passwordGen {
         return array[random];
     }
 
+    public static char SpecChar(char[] array) {
+        byte random = (byte)(Math.random() * 8);
+        return array[random];
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        final char[] special = { '!', '@', '#', '$', '%', '^', '&', '*' };
         final char[] numbers = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
         final char[] alphabet = {
                 'a', 'b', 'c', 'd', 'e', 'f', 'g',
@@ -29,17 +35,35 @@ public class passwordGen {
 
         float selector;
 
+        System.out.println("Random Password Generator V2");
+        System.out.print("Enter the desired length: ");
         int length = scanner.nextInt();
+        scanner.nextLine();
+        System.out.print("Do you want special characters?\nEnter a true/false value: ");
+        boolean useSpecial = scanner.nextBoolean();
 
         String passFinal = "";
 
         try {
-            for (int i = 0; i < length; i++) {
-                selector = (float)Math.random();
-                if (selector < 0.5) {
-                    passFinal += Number(numbers);
-                } else {
-                    passFinal += Char(alphabet);
+            if (!useSpecial) {
+                for (int i = 0; i < length; i++) {
+                    selector = (float)Math.random();
+                    if (selector < 0.5) {
+                        passFinal += Number(numbers);
+                    } else {
+                        passFinal += Char(alphabet);
+                    }
+                }
+            } else {
+                for (int i = 0; i < length; i++) {
+                    selector = (float)Math.random();
+                    if (selector < 0.4) {
+                        passFinal += Char(alphabet);
+                    } else if (selector >= 0.4 && selector < 0.8) {
+                        passFinal += Number(numbers);
+                    } else {
+                        passFinal += SpecChar(special);
+                    }
                 }
             }
 
