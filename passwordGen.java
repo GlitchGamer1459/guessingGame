@@ -2,19 +2,19 @@ import java.util.Scanner;
 
 public class passwordGen {
 
-    public static char Number(char[] array) {
+    public static char Number(char[] number) {
         byte random = (byte)(Math.random() * 10);
-        return array[random];
+        return number[random];
     }
 
-    public static char Char(char[] array) {
+    public static char Char(char[] alphabet) {
         byte random = (byte)(Math.random() * 52);
-        return array[random];
+        return alphabet[random];
     }
 
-    public static char SpecChar(char[] array) {
+    public static char SpecChar(char[] special) {
         byte random = (byte)(Math.random() * 8);
-        return array[random];
+        return special[random];
     }
 
     public static void main(String[] args) {
