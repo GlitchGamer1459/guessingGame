@@ -1,6 +1,22 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class passwordGen {
+
+    public static void File(File file) {
+        try {
+            if (file.createNewFile()) {
+                System.out.println("File created: " + file.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        } catch (IOException e) {
+            System.out.println("An Error Occurred:");
+            e.printStackTrace();
+        }
+    }
 
     public static char Number(char[] number) {
         byte random = (byte)(Math.random() * 10);
@@ -35,16 +51,20 @@ public class passwordGen {
 
         float selector;
 
-        System.out.println("Random Password Generator V2");
-        System.out.print("Enter the desired length: ");
-        int length = scanner.nextInt();
-        scanner.nextLine();
-        System.out.print("Do you want special characters?\nEnter a true/false value: ");
-        boolean useSpecial = scanner.nextBoolean();
-
-        String passFinal = "";
-
         try {
+            System.out.println("Random Password Generator V2");
+            System.out.print("Enter the desired length: ");
+            int length = scanner.nextInt();
+            scanner.nextLine();
+            System.out.print("Do you want special characters?\nEnter a true/false value: ");
+            boolean useSpecial = scanner.nextBoolean();
+
+            File file = new File("history.txt");
+            FileWriter writer = new FileWriter("history.txt");
+            File(file);
+
+            String passFinal = "";
+
             if (!useSpecial) {
                 for (int i = 0; i < length; i++) {
                     selector = (float)Math.random();
@@ -66,10 +86,18 @@ public class passwordGen {
                     }
                 }
             }
+            try {
+                writer.write(passFinal);
+                writer.close();
+            } catch (IOException e) {
+                System.out.println("An error occurred.");
+                e.printStackTrace();
+            }
 
             System.out.println(passFinal);
         } catch (Exception e) {
             System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 }
